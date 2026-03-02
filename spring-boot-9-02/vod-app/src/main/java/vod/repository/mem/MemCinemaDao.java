@@ -1,5 +1,6 @@
 package vod.repository.mem;
 
+import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Component;
 import vod.repository.CinemaDao;
 import vod.model.Cinema;
@@ -10,6 +11,7 @@ import java.util.Set;
 import java.util.stream.Collectors;
 
 @Component
+@Primary
 public class MemCinemaDao implements CinemaDao {
 
     @Override
