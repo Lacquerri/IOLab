@@ -1,98 +1,96 @@
 package vod.repository.mem;
 
-import vod.model.Cinema;
-import vod.model.Director;
-import vod.model.Movie;
+import vod.model.Shop;
+import vod.model.Producer;
+import vod.model.Supplement;
 
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 class SampleData {
 
-    static List<Cinema> cinemas = new ArrayList<>();
+    static List<Shop> shops = new ArrayList<>();
 
-    static List<Director> directors = new ArrayList<>();
+    static List<Producer> producers = new ArrayList<>();
 
-    static List<Movie> movies = new ArrayList<>();
+    static List<Supplement> supplements = new ArrayList<>();
 
     static {
 
-        Director smarzowski = new Director(1, "Wojciech", "Smarzowski");
-        Director vega = new Director(2, "Patryk", "Vega");
-        Director wajda = new Director(3, "Andrzej", "Wajda");
-        Director skolimowski = new Director(4, "Jerzy", "Skolimowski");
+        Producer kfd = new Producer(1, "KFD");
+        Producer sfd = new Producer(2, "SFD");
+        Producer allNutrition = new Producer(3, "All Nutrition");
+        Producer olimp = new Producer(4, "Olimp");
 
-        Movie wolyn = new Movie(1, "Wolyn", "https://ocdn.eu/pulscms-transforms/1/D0gk9kuTURBXy8zYzFhMDRhZS1jOGRiLTQxN2YtOTcwYy1iNjRjZDBkMjc4MDYuanBlZ5GTBc0DFM0BvIGhMAU", smarzowski, (float) 4.1);
-        Movie wesele = new Movie(2, "Wesele", "https://fwcdn.pl/fpo/40/98/124098/7521214.6.jpg", smarzowski, (float) 4.3);
+        Supplement kreatynaKfd = new Supplement(1, "Kreatyna", "Zielone Jablko", kfd);
+        Supplement cytrulinaKfd = new Supplement(2, "Cytrulina", "Brzoskwinia", kfd);
 
-        Movie polityka = new Movie(3, "Polityka", "https://i.iplsc.com/-/00094J03E94SMPSS-C122.jpg", vega, (float) 3.9);
-        Movie pitbul = new Movie(4, "Pitbul", "https://bi.im-g.pl/im/5b/9b/12/z19510363V,-Pitbull--Nowe-porzadki---rez--Patryk-Vega--plakat.jpg", vega, (float) 3.1);
+        Supplement kolagenSfd = new Supplement(3, "Kolagen", "Ananas", sfd);
+        Supplement cytrulinaSfd = new Supplement(4, "Cytrulina", "Granat", sfd);
 
-        Movie katyn = new Movie(5, "Katyn", "http://www.gokmichalowo.pl/imprezy2007/katyn/plakat_maly.jpg", wajda, (float) 4.7);
-        Movie tatarak = new Movie(6, "Tatarak", "http://gapla.fn.org.pl/public/cache/P21829-483x700.jpg", wajda, (float) 4.4);
+        Supplement kreatynaAllNut = new Supplement(5, "Kreatyna", "Pomarancza", allNutrition);
+        Supplement witaminaD3 = new Supplement(6, "Witamina D3", "Bezsmakowe", allNutrition);
 
-        Movie essential = new Movie(7, "Essential killing", "https://m.media-amazon.com/images/M/MV5BNTE5NjAxMTEzNl5BMl5BanBnXkFtZTcwMjYzMDQ0Ng@@._V1_UX182_CR0,0,182,268_AL_.jpg", skolimowski, (float) 4.9);
-        Movie ferdydurke = new Movie(8, "Ferdydurke", "http://gapla.fn.org.pl/public/cache/P19423-483x700.jpg", skolimowski, (float) 4.3);
+        Supplement wpc82 = new Supplement(7, "Bialko WPC 82", "Ciasteczkowy", olimp);
+        Supplement magnez = new Supplement(8, "Magnez + B6", "Bezsmakowe", olimp);
 
-        bind(wolyn, smarzowski);
-        bind(wesele, smarzowski);
+        bind(kreatynaKfd, kfd);
+        bind(cytrulinaKfd, kfd);
 
-        bind(polityka, vega);
-        bind(pitbul, vega);
+        bind(kolagenSfd, sfd);
+        bind(cytrulinaSfd, sfd);
 
-        bind(katyn, wajda);
-        bind(tatarak, wajda);
+        bind(kreatynaAllNut, allNutrition);
+        bind(witaminaD3, allNutrition);
 
-        bind(essential, skolimowski);
-        bind(ferdydurke, skolimowski);
+        bind(wpc82, olimp);
+        bind(magnez, olimp);
 
-        Cinema kinoteka = new Cinema(1, "Kinoteka", "https://www.kinoteka.pl/img/logo.png");
-        Cinema podBaranami = new Cinema(2, "Kino pod Baranami", "http://www.festiwalfilmuniemego.pl/wp-content/uploads/2015/11/Kino-pod-Baranami.png");
-        Cinema noweHoryzonty = new Cinema(3, "Kino Nowe Horyzonty", "https://i2.wp.com/garretreza.pl/wp-content/uploads/2018/07/nh.jpg");
-        Cinema zak = new Cinema(4, "Kino Zak", "https://static2.s-trojmiasto.pl/zdj/c/n/19/2276/250x0/2276445.jpg");
+        Shop shopKfd = new Shop(1, "KFD", "https://photos05.redcart.pl/templates/images/description/6187/Image/1623418596-kfd-logo.png");
+        Shop shopSfd = new Shop(2, "SFD", "https://galeriamlociny.pl/app/uploads/wayfinder/url_logo/3225.png");
+        Shop strefaGladiatorow = new Shop(3, "Strefa Gladiatorow", "https://strefagladiatorow.pl/userdata/public/producers/69.jpg");
+        Shop shopOlimp = new Shop(4, "Olimp", "https://content.zlotetarasy.pl/static/media/2021/11/25/c1b56df4-13b8-47d0-b4ef-146da0ab3b67.png");
 
-        bind(kinoteka, wesele);
-        bind(noweHoryzonty, wesele);
-        bind(noweHoryzonty, wolyn);
-        bind(noweHoryzonty, polityka);
+        bind(shopKfd, cytrulinaKfd);
+        bind(strefaGladiatorow, cytrulinaKfd);
+        bind(strefaGladiatorow, kreatynaKfd);
+        bind(strefaGladiatorow, kolagenSfd);
 
-        bind(kinoteka, tatarak);
-        bind(zak, tatarak);
-        bind(zak, essential);
-        bind(podBaranami, essential);
-        bind(podBaranami, polityka);
+        bind(shopKfd, witaminaD3);
+        bind(shopOlimp, witaminaD3);
+        bind(shopOlimp, wpc82);
+        bind(shopSfd, wpc82);
+        bind(shopSfd, kolagenSfd);
 
-        movies.add(wolyn);
-        movies.add(wesele);
-        movies.add(polityka);
-        movies.add(pitbul);
-        movies.add(katyn);
-        movies.add(tatarak);
-        movies.add(essential);
-        movies.add(ferdydurke);
+        supplements.add(kreatynaKfd);
+        supplements.add(cytrulinaKfd);
+        supplements.add(kolagenSfd);
+        supplements.add(cytrulinaSfd);
+        supplements.add(kreatynaAllNut);
+        supplements.add(witaminaD3);
+        supplements.add(wpc82);
+        supplements.add(magnez);
 
-        directors.add(smarzowski);
-        directors.add(vega);
-        directors.add(wajda);
-        directors.add(skolimowski);
+        producers.add(kfd);
+        producers.add(sfd);
+        producers.add(allNutrition);
+        producers.add(olimp);
 
-        cinemas.add(kinoteka);
-        cinemas.add(podBaranami);
-        cinemas.add(noweHoryzonty);
-        cinemas.add(zak);
+        shops.add(shopKfd);
+        shops.add(shopSfd);
+        shops.add(strefaGladiatorow);
+        shops.add(shopOlimp);
 
     }
 
-    private static void bind(Cinema c, Movie m) {
-        c.addMovie(m);
-        m.addCinema(c);
+    private static void bind(Shop c, Supplement m) {
+        c.addSupplement(m);
+        m.addShop(c);
     }
 
-    private static void bind(Movie m, Director d) {
-        d.addMovie(m);
-        m.setDirector(d);
+    private static void bind(Supplement m, Producer d) {
+        d.addSuplement(m);
+        m.setProducer(d);
     }
 
 }
