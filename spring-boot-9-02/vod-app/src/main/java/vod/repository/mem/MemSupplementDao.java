@@ -1,6 +1,7 @@
 package vod.repository.mem;
 
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Repository;
 import vod.repository.SupplementDao;
 import vod.model.Shop;
 import vod.model.Producer;
@@ -9,7 +10,7 @@ import vod.model.Supplement;
 import java.util.List;
 import java.util.stream.Collectors;
 
-@Component
+@Repository("SupplementDao")
 public class MemSupplementDao implements SupplementDao {
     @Override
     public List<Supplement> findAll() {

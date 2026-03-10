@@ -2,6 +2,7 @@ package vod.service.impl;
 
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 import vod.model.Shop;
 import vod.model.Supplement;
 import vod.repository.ShopDao;
@@ -11,7 +12,7 @@ import vod.service.ShopService;
 import java.util.List;
 import java.util.logging.Logger;
 
-@Component
+@Service
 @Scope("prototype")
 public class ShopServiceBean implements ShopService {
 

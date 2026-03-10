@@ -1,6 +1,7 @@
 package vod.service.impl;
 
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 import vod.repository.ShopDao;
 import vod.repository.ProducerDao;
 import vod.repository.SupplementDao;
@@ -12,7 +13,7 @@ import vod.service.SupplementService;
 import java.util.List;
 import java.util.logging.Logger;
 
-@Component
+@Service
 public class SupplementServiceBean implements SupplementService {
 
     private static final Logger log = Logger.getLogger(SupplementService.class.getName());

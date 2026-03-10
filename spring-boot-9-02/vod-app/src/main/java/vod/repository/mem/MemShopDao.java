@@ -2,6 +2,7 @@ package vod.repository.mem;
 
 import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Repository;
 import vod.repository.ShopDao;
 import vod.model.Shop;
 import vod.model.Supplement;
@@ -9,7 +10,7 @@ import vod.model.Supplement;
 import java.util.List;
 import java.util.stream.Collectors;
 
-@Component
+@Repository("ShopDao")
 @Primary
 public class MemShopDao implements ShopDao {
 
