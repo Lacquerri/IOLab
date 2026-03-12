@@ -1,14 +1,20 @@
 package vod.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import jakarta.validation.constraints.NotNull;
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class Supplement {
 
     private int id;
+    @NotNull
     private String name;
-    private String flavor;//url
+    private String flavor;
+    @NotNull//url
     private Producer producer;//relacja do rezysera - kolejny obiekt danych w uproszczeniu założenie że jeden film ma 1 reżysera
+    @JsonIgnore
     private List<Shop> shops = new ArrayList<>();
 //relacja wiele do wiele - bidirectional
 

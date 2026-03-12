@@ -6,3 +6,30 @@ Accept: application/xml
 ###
 GET http://localhost:8080/webapi/supplements/1/shops
 Accept: application/xml
+
+###
+POST http://localhost:8080/webapi/shops
+Content-Type: application/json
+Accept-Language: en
+
+{
+  "name": "Wkdzik",
+  "logo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSsDURm2yNk7QWRWocff0zhW7UFupK3DuzqVQ&s"
+}
+
+###
+GET http://localhost:8080/webapi/supplements
+###
+GET http://localhost:8080/webapi/supplements/1
+###
+GET http://localhost:8080/webapi/shop/1/supplement
+###
+POST http://localhost:8080/webapi/supplement
+Content-Type: application/json
+
+{
+  "name":"IO",
+  "flavor": "Pomaranczowy",
+  "producerId": 3
+
+}

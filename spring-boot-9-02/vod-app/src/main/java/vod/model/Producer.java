@@ -1,5 +1,7 @@
 package vod.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -7,6 +9,7 @@ public class Producer {
 
     private int id;
     private String name;
+    @JsonIgnore
     private List<Supplement> supplements = new ArrayList<>();//relacja 1 do wielu
 //listy zeby przey przełączniu na SpringDate nie było komplikacji
 //lista od seta różni się tym że są w niej powtórzenia oraz trzymamy kolejność wrzucania

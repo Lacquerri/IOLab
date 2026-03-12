@@ -15,4 +15,5 @@ public interface ShopService {
 
     List<Supplement> getSupplementsInShop(Shop c);
 
+    Shop addShop(Shop m);
 }

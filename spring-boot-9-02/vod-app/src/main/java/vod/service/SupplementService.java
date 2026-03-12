@@ -1,6 +1,7 @@
 package vod.service;
 
 import vod.model.Producer;
+import vod.model.Shop;
 import vod.model.Supplement;
 
 import java.util.List;
@@ -16,6 +17,7 @@ public interface SupplementService {
 
     Supplement addSupplement(Supplement m);
 
+    List<Supplement> getSupplementsInShop(Shop d);
 
     List<Producer> getAllProducers();
 

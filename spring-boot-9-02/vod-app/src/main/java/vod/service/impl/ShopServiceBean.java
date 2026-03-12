@@ -51,4 +51,10 @@ public class ShopServiceBean implements ShopService {
         return shopDao.findBySupplement(m);
     }
 
+    @Override
+    public Shop addShop(Shop m) {
+        log.info("about to add shop " + m);
+        return shopDao.add(m);
+    }
+
 }

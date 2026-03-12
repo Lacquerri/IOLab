@@ -13,4 +13,5 @@ public interface ShopDao {
 
     List<Shop> findBySupplement(Supplement m);
 
+    Shop add(Shop m);
 }

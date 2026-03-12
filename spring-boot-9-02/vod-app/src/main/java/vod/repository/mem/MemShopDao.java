@@ -28,4 +28,12 @@ public class MemShopDao implements ShopDao {
     public List<Shop> findBySupplement(Supplement m) {
         return SampleData.shops.stream().filter(c -> c.getSupplements().contains(m)).collect(Collectors.toList());
     }
+
+    @Override
+    public Shop add(Shop m) {
+        int max = SampleData.shops.stream().max((m1, m2) -> m1.getId() - m2.getId()).get().getId();
+        m.setId(++max);
+        SampleData.shops.add(m);
+        return m;
+    }
 }
