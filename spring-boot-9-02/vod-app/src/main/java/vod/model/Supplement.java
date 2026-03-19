@@ -1,19 +1,32 @@
 package vod.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 
 import java.util.ArrayList;
 import java.util.List;
 
+@Entity
 public class Supplement {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     @NotNull
     private String name;
     private String flavor;
     @NotNull//url
+
+    @ManyToOne
+    @JoinColumn(name= "producer_id")
     private Producer producer;//relacja do rezysera - kolejny obiekt danych w uproszczeniu założenie że jeden film ma 1 reżysera
+    @ManyToMany
+    @JoinTable(
+            name = "supplement_shop",
+            joinColumns = @JoinColumn(name = "supplement_id", referencedColumnName = "id"),
+            inverseJoinColumns = @JoinColumn(name = "shop_id", referencedColumnName = "id")
+    )
     @JsonIgnore
     private List<Shop> shops = new ArrayList<>();
 //relacja wiele do wiele - bidirectional

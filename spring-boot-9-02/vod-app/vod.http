@@ -1,13 +1,19 @@
-###
+### get all shops
 GET http://localhost:8080/webapi/shops
+
 ###
+GET http://localhost:8080/webapi/shops?phrase=foo
+custom-header: custom-value
+Cookie: some-cookie=some-cookie
+
+### get shop by id
 GET http://localhost:8080/webapi/shops/2
 Accept: application/xml
-###
+### get all shops with supplement
 GET http://localhost:8080/webapi/supplements/1/shops
 Accept: application/xml
 
-###
+### create new shop
 POST http://localhost:8080/webapi/shops
 Content-Type: application/json
 Accept-Language: en
@@ -17,19 +23,19 @@ Accept-Language: en
   "logo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSsDURm2yNk7QWRWocff0zhW7UFupK3DuzqVQ&s"
 }
 
-###
+### get all supplements
 GET http://localhost:8080/webapi/supplements
-###
+###  get supplement by id
 GET http://localhost:8080/webapi/supplements/1
-###
+### get supplements from shop
 GET http://localhost:8080/webapi/shop/1/supplement
-###
+### create new supplement
 POST http://localhost:8080/webapi/supplement
 Content-Type: application/json
 
 {
   "name":"IO",
   "flavor": "Pomaranczowy",
-  "producerId": 3
+  "producerId": 10
 
 }

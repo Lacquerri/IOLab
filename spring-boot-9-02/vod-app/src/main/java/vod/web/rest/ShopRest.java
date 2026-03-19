@@ -34,8 +34,19 @@ public class ShopRest {
     void initBinder(WebDataBinder binder) {binder.addValidators(validator);}
 */
     @GetMapping("/shops")
-    List<Shop> getShops() {
+    List<Shop> getShops(
+            @RequestParam(value = "phrase", required = false) String phrase,
+            @RequestParam(value = "custom-header", required = false) String customHeader,
+            @RequestParam(value = "some-cookie", required = false) String someCookie
+    ) {
         log.info("about to retrive shops list");
+        log.info("phrase param: {}", phrase);
+        log.info("custom header param: {}", customHeader);
+        log.info("some cookie value: {}", someCookie);
+        if(phrase != null && phrase.equals("foo")) {
+            throw new IllegalArgumentException("Foo!");
+        }
+
         List<Shop> shops = shopService.getAllShops();
         log.info("{} shops found", shops.size());
         return shops;

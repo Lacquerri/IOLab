@@ -11,7 +11,6 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Repository("ShopDao")
-@Primary
 public class MemShopDao implements ShopDao {
 
     @Override

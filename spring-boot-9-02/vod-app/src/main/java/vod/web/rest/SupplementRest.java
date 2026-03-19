@@ -69,8 +69,11 @@ public class SupplementRest {
     }
 
     @PostMapping("/supplement")
-    ResponseEntity<?> addSupplement(@RequestBody SupplementDTO supplementDTO){
+    ResponseEntity<?> addSupplement(@Validated @RequestBody SupplementDTO supplementDTO, Errors errors){
         log.info("about to add supplement {}", supplementDTO);
+        if(errors.hasErrors()){
+            return ResponseEntity.badRequest().build();
+        }
         Supplement supplement = new Supplement();
         supplement.setName(supplementDTO.getName());
         supplement.setFlavor(supplementDTO.getFlavor());
