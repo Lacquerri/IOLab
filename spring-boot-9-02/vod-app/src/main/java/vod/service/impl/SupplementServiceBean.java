@@ -1,7 +1,11 @@
 package vod.service.impl;
 
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.PlatformTransactionManager;
+import org.springframework.transaction.TransactionStatus;
+import org.springframework.transaction.support.DefaultTransactionDefinition;
 import vod.repository.ShopDao;
 import vod.repository.ProducerDao;
 import vod.repository.SupplementDao;
@@ -14,6 +18,7 @@ import java.util.List;
 import java.util.logging.Logger;
 
 @Service
+@RequiredArgsConstructor
 public class SupplementServiceBean implements SupplementService {
 
     private static final Logger log = Logger.getLogger(SupplementService.class.getName());
@@ -22,11 +27,8 @@ public class SupplementServiceBean implements SupplementService {
     private ShopDao shopDao;
     private SupplementDao supplementDao;
 
-    public SupplementServiceBean(ProducerDao producerDao, ShopDao shopDao, SupplementDao supplementDao) {
-        this.producerDao = producerDao;
-        this.shopDao = shopDao;
-        this.supplementDao = supplementDao;
-    }
+    private final PlatformTransactionManager transactionManager;
+
 
     public List<Supplement> getAllSupplements() {
         log.info("searching all supplements...");
@@ -75,8 +77,21 @@ public class SupplementServiceBean implements SupplementService {
 
     @Override
     public Supplement addSupplement(Supplement m) {
+
         log.info("about to add supplement " + m);
-        return supplementDao.add(m);
+        TransactionStatus ts = transactionManager.getTransaction(new DefaultTransactionDefinition());
+        try{
+            m = supplementDao.add(m);
+            if(m.getName().equals("Apocalypse Now")){
+                throw new RuntimeException("Not yet!");
+            }
+
+        }catch(RuntimeException e){
+            transactionManager.rollback(ts);
+            throw e;
+        }
+
+        return m;
     }
 
     @Override

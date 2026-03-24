@@ -12,7 +12,7 @@ import vod.repository.SupplementDao;
 import java.util.List;
 
 @Repository
-@Primary
+
 public class JpaSupplementDao implements SupplementDao {
     @PersistenceContext
     private EntityManager entityManager;

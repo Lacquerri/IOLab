@@ -36,6 +36,6 @@ Content-Type: application/json
 {
   "name":"IO",
   "flavor": "Pomaranczowy",
-  "producerId": 10
+  "producerId": 3
 
 }
