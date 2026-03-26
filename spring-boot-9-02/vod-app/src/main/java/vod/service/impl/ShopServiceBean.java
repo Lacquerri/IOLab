@@ -1,6 +1,8 @@
 package vod.service.impl;
 
 import org.springframework.context.annotation.Scope;
+import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 import vod.model.Shop;
@@ -12,8 +14,10 @@ import vod.service.ShopService;
 import java.util.List;
 import java.util.logging.Logger;
 
+
 @Service
 @Scope("prototype")
+@EnableMethodSecurity
 public class ShopServiceBean implements ShopService {
 
     private static final Logger log = Logger.getLogger(ShopService.class.getName());
@@ -50,7 +54,7 @@ public class ShopServiceBean implements ShopService {
         log.info("searching shops by supplement " + m.getId());
         return shopDao.findBySupplement(m);
     }
-
+    @PreAuthorize("hasRole('ADMIN')")
     @Override
     public Shop addShop(Shop m) {
         log.info("about to add shop " + m);

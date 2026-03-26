@@ -17,9 +17,10 @@ Accept: application/xml
 POST http://localhost:8080/webapi/shops
 Content-Type: application/json
 Accept-Language: en
+Authorization: Basic dbuser3 dbuser3
 
 {
-  "name": "Wkdzik",
+  "name": "Wkdzik5",
   "logo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSsDURm2yNk7QWRWocff0zhW7UFupK3DuzqVQ&s"
 }
 
