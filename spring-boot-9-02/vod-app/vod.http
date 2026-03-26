@@ -39,3 +39,6 @@ Content-Type: application/json
   "producerId": 3
 
 }
+
+### shutdown service
+POST http://localhost:8080/actuator/shutdown
