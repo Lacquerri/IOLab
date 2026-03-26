@@ -5,6 +5,8 @@ import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.TransactionStatus;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.transaction.support.DefaultTransactionDefinition;
 import vod.repository.ShopDao;
 import vod.repository.ProducerDao;
@@ -23,9 +25,9 @@ public class SupplementServiceBean implements SupplementService {
 
     private static final Logger log = Logger.getLogger(SupplementService.class.getName());
 
-    private ProducerDao producerDao;
-    private ShopDao shopDao;
-    private SupplementDao supplementDao;
+    private final ProducerDao producerDao;
+    private final ShopDao shopDao;
+    private final SupplementDao supplementDao;
 
     private final PlatformTransactionManager transactionManager;
 
@@ -75,6 +77,7 @@ public class SupplementServiceBean implements SupplementService {
         return producerDao.findById(id);
     }
 
+    @Transactional(propagation = Propagation.REQUIRED)
     @Override
     public Supplement addSupplement(Supplement m) {
 
@@ -82,7 +85,7 @@ public class SupplementServiceBean implements SupplementService {
         TransactionStatus ts = transactionManager.getTransaction(new DefaultTransactionDefinition());
         try{
             m = supplementDao.add(m);
-            if(m.getName().equals("Apocalypse Now")){
+            if(m.getName().equals("IO")){
                 throw new RuntimeException("Not yet!");
             }
 

@@ -3,6 +3,8 @@ package vod.repository.data;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 import vod.model.Producer;
 import vod.model.Shop;
 import vod.model.Supplement;
@@ -24,6 +26,7 @@ public class DataSupplementDao implements SupplementDao {
     public List<Supplement> findByProducer(Producer d){return repository.findAllByProducer(d);}
     @Override
     public List<Supplement> findByShop(Shop c){return repository.findAllByShopsContaining(c);}
+    @Transactional(propagation = Propagation.MANDATORY)
     @Override
     public Supplement add(Supplement m){return repository.save(m);}
 }
